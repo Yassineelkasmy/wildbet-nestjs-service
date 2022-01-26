@@ -4,7 +4,7 @@ import {
     LeanDocument,
     Model,
   } from 'mongoose';
-export abstract class EntityRepository<TEntity> {
+export abstract class EntityRepository<TEntity, TId> {
     constructor(private readonly entityModel: Model<TEntity>) {
 
     }
@@ -25,12 +25,16 @@ export abstract class EntityRepository<TEntity> {
         return entityDocument;
     }
 
-    async find(
+    protected async find(
         entityFilterQuery?: FilterQuery<TEntity>,
       ): Promise<TEntity[]> {
         return (
           await this.entityModel.find(entityFilterQuery, {}, { lean: true })
         );
-      }
+    }
+
+    async findOneById(id: TId): Promise<TEntity> {
+        return this.findOne({ _id: id } as FilterQuery<TEntity>);
+    }
     
 }
