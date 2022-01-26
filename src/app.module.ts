@@ -6,9 +6,10 @@ import { TeamModule } from './team/team.module';
 import { MatchModule } from './match/match.module';
 import { RoundModule } from './round/round.module';
 import { SeasonModule } from './season/season.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [LeagueModule, TeamModule, MatchModule, RoundModule, SeasonModule],
+  imports: [LeagueModule, TeamModule, MatchModule, RoundModule, SeasonModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
