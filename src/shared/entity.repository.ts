@@ -9,7 +9,7 @@ export abstract class EntityRepository<TEntity, TId> {
 
     }
 
-    protected async findOne(
+    async findOne(
         entityFilterQuery: FilterQuery<TEntity>,
     ) : Promise<TEntity> {
         const entityDocument = await this.entityModel.findOne(
@@ -25,7 +25,7 @@ export abstract class EntityRepository<TEntity, TId> {
         return entityDocument;
     }
 
-    protected async find(
+    async find(
         entityFilterQuery?: FilterQuery<TEntity>,
       ): Promise<TEntity[]> {
         return (
