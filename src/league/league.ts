@@ -3,7 +3,7 @@ import { Prop, Schema } from "@nestjs/mongoose";
 @Schema({ collection: 'leagues' })
 export class League {
     @Prop()
-    _id: number;
+    league_id: number;
 
     @Prop()
     name: string;
