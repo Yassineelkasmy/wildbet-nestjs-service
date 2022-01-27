@@ -1,7 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import {
     FilterQuery,
-    LeanDocument,
     Model,
   } from 'mongoose';
 export abstract class EntityRepository<TEntity, TId> {
