@@ -1,4 +1,4 @@
-export interface Venue {
+export class Venue {
     venue_id: number;
     name:string;
     capacity:number;

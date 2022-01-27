@@ -1,7 +1,8 @@
 import { Prop, Schema } from "@nestjs/mongoose";
-import { Round } from "src/round/round";
-import { Team } from "src/team/team";
 import { MatchStats } from "./match_stats";
+import { Round } from "./round";
+import { Team } from "./team";
+import { Venue } from "./venue";
 
 
 
@@ -33,14 +34,19 @@ export class Match {
     @Prop()
     league_id:number;
 
-    @Prop({type: [Team]})
+    @Prop({type: Team})
     home_team: Team;
 
-    @Prop({type:[Team]})
+    @Prop({type:Team})
     away_team: Team;
 
-    @Prop({type:[Round]})
+    @Prop({type:Round})
     round: Round;
 
+    @Prop({type:MatchStats})
+    stats: MatchStats
+
+    @Prop({type:Venue})
+    venue: Venue;
 
 }
