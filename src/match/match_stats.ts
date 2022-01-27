@@ -1,4 +1,4 @@
-export interface MatchStats{ 
+export class MatchStats{ 
     home_score: number; //1
     away_score: number; //3
     ht_score: string; // "0-1"

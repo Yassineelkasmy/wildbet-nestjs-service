@@ -1,9 +1,11 @@
 import { Prop, Schema } from "@nestjs/mongoose";
-import { MatchStats } from "./match_stats.interface";
-import { Round } from "./round.interface";
-import { Team } from "./team.interface";
+import { Round } from "src/round/round";
+import { Team } from "src/team/team";
+import { MatchStats } from "./match_stats";
 
-@Schema({collection:'matchss'})
+
+
+@Schema({collection:'matches'})
 export class Match {
 
     @Prop()
@@ -28,15 +30,14 @@ export class Match {
     @Prop()
     league_id:number;
 
-    @Prop()
+    @Prop({type: [Team]})
     home_team: Team;
 
-    @Prop()
+    @Prop({type:[Team]})
     away_team: Team;
 
-    @Prop()
+    @Prop({type:[Round]})
     round: Round;
 
-    @Prop()
-    stats: MatchStats;
+
 }
