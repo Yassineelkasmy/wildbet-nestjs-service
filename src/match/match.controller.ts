@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from "@nestjs/common";
 import { MatchRepository } from "./match.repository";
 
-@Controller('matchs')
+@Controller('matches')
 export class MatchController {
     constructor(private readonly matchRepo:MatchRepository){}
 
