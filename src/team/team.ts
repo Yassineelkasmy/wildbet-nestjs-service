@@ -1,12 +1,15 @@
 import { Prop, Schema } from "@nestjs/mongoose";
 
-@Schema({ collection: 'leagues' })
-export class League {
+@Schema({ collection: 'teams' })
+export class Team {
     @Prop()
-    league_id: number;
+    team_id: number;
 
     @Prop()
     name: string;
+
+    @Prop()
+    short_code: string;
 
     @Prop()
     logo: string;
