@@ -9,6 +9,9 @@ import { MatchStats } from "./match_stats";
 export class Match {
 
     @Prop()
+    contract_address:string;
+
+    @Prop()
     match_id:string;
 
     //We may add enum validation, But we don`t need now as we are adding data manualy

@@ -2,6 +2,10 @@ import { Prop, Schema } from "@nestjs/mongoose";
 
 @Schema({ collection: 'rounds' })
 export class Round {
+
+    @Prop()
+    contract_address:string;
+
     @Prop()
     round_id: number;
     
