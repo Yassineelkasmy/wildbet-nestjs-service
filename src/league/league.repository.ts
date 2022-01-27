@@ -5,7 +5,7 @@ import { League } from "./league";
 import { Model } from "mongoose";
 
 @Injectable()
-export class LeagueRepository extends EntityRepository<League, number> {
+export class LeagueRepository extends EntityRepository<League> {
     constructor(@InjectModel(League.name) leagueModel: Model<League>){
         super(leagueModel);
     }

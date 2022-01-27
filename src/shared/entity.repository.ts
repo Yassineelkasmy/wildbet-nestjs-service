@@ -3,7 +3,7 @@ import {
     FilterQuery,
     Model,
   } from 'mongoose';
-export abstract class EntityRepository<TEntity, TId> {
+export abstract class EntityRepository<TEntity> {
     constructor(private readonly entityModel: Model<TEntity>) {
 
     }
@@ -32,8 +32,6 @@ export abstract class EntityRepository<TEntity, TId> {
         );
     }
 
-    async findOneById(id: TId): Promise<TEntity> {
-        return this.findOne({ _id: id } as FilterQuery<TEntity>);
-    }
+    
     
 }
