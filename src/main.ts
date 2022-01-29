@@ -5,7 +5,9 @@ import { environment } from './environment';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: `http://${environment.cors_origin_host}:${environment.cors_origin_port}`,
+    //origin: `http://${environment.cors_origin_host}:${environment.cors_origin_port}`,
+    origin: /https?:\/\/(([^/]+\.)?localhost\:4200)$/i,
+
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept',
    
