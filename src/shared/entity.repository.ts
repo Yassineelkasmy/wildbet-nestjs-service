@@ -1,6 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
 import {
     FilterQuery,
+    UpdateQuery,
     Model,
   } from 'mongoose';
 export abstract class EntityRepository<TEntity> {
@@ -30,6 +31,14 @@ export abstract class EntityRepository<TEntity> {
         return (
           await this.entityModel.find(entityFilterQuery, {}, { lean: true })
         );
+    }
+
+    async update(
+        entityFilterQuery: FilterQuery<TEntity>, entityUpdateQuery : UpdateQuery<TEntity>
+    ): Promise<TEntity>{
+        return (
+            await this.entityModel.findOneAndUpdate(entityFilterQuery,entityUpdateQuery)
+        )
     }
 
     

@@ -18,6 +18,9 @@ import { MatchRepository } from './match.repository';
     ],
     controllers:[
         MatchController
+    ],
+    exports : [
+        MatchRepository
     ]
 })
 export class MatchModule {}

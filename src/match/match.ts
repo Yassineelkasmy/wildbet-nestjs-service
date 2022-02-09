@@ -13,7 +13,7 @@ export class Match {
     contract_address:string;
 
     @Prop()
-    match_id:string;
+    match_id:number;
 
     //We may add enum validation, But we don`t need now as we are adding data manualy
     @Prop()

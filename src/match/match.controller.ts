@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable no-var */
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Param } from "@nestjs/common";
 import { MatchRepository } from "./match.repository";
 
@@ -18,4 +21,17 @@ export class MatchController {
 
         return matches;
     }
+
+    @Get('roundMatches/:idRound')
+    async fetchMatchByRoundf(@Param('idRound') idRound:number) {
+        const matches = await this.matchRepo.find();
+        var matchesFilt=[];
+        for(let matche of matches){
+            if(matche.round.round_id==idRound){
+                matchesFilt.push(matche);
+            }
+        }
+        return matchesFilt;
+    }
+
 }
