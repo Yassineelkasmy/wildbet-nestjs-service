@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
 import { MatchRepository } from "src/match/match.repository";
-import { MatchStatus } from "src/match/match_status.enum";
 import Web3 from "web3";
 import {matchContractByteCode,matchContractAbi} from '../contracts/MatchContract';
 
@@ -12,8 +11,8 @@ export class Web3Service {
     public matchRepository:MatchRepository
   ){}
 
-   address = '0xbBA47b81Cb29ac7b88Cc8EF6241Bf8C2eA7eF996';
-   privateKey = 'd3b070526a697b8e79ff490786cc60ab099c947bf10b682bd46c4c1073b2f13a';
+   address = '0x82d0628089B3f60b02C31C47D5FF186D522C83b1';
+   privateKey = '68ace53511224a73018ac73d9277f8b97e910ba273ec3092238ae4d6dbfd6116';
     web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
    //web3 =  new Web3('27e484dcd9e3efcfd25a83a78777cdf1');
    contract:any;
@@ -40,7 +39,7 @@ export class Web3Service {
        (resp) => {  
         this.matchRepository.update({match_id:matchId},{contract_address:resp.options.address})
 
-          resp.options.address
+          console.log(resp.options.address)
         }
      );
 
@@ -51,8 +50,9 @@ export class Web3Service {
    }
 
    async deployUnplayedMatchesContracts() {
-     const unplayedMatches = await this.matchRepository.find({status_code:MatchStatus.NotStarted});
-     
+     const matches = await this.matchRepository.find();
+     const unplayedMatches = matches.filter( (m)=> m.status!='finished' )
+         
 
      for (const matche of unplayedMatches) {
        this.deployMatchContract(matche.match_id);
